@@ -5,15 +5,15 @@ Python抓取證券交易所上市股票資料
 網路上其他opensource都無法抓資料，  
 只好自己寫一個。  
   
-會將股票資料透過pandas格式存到 save/[股票代碼].pickle  
+會將股票資料透過 pandas 格式存到 save/[股票代碼].pickle  
   
 ## Requirement
   
-python 2.7  
+python 2.7  
 pandas (>=0.18.0)  
 bs4  
-lxml (if needed)  
-wget (if needed)  
+lxml (if needed)  
+wget (if needed)  
   
 ## Python files
 UpdateTWSE.py  
@@ -26,3 +26,4 @@ startDate:  timedelta可設定往前幾天
 ## 版本紀錄
 ### 2017.06.07
 First commit.  
+  
