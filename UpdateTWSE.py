@@ -108,12 +108,14 @@ def UpdateOneStock(stockNum, start):
     print 'Downloading stock: %s from %d/%02d' % (stockNum, getYear, getMonth)
     i = 0
     retry = 0
+    dataEmpty = False
     while i <= monthCount:
         # print 'Downloading stock: %s from %d/%02d' % (stockNum, getYear,
         # getMonth)
         jsonTmp = getJson(getYear, getMonth, stockNum)
         if jsonTmp != None:
             retry = 0
+            dataEmpty = False
             df2 = pd.DataFrame(jsonTmp, columns=list(
                 ["date", "amount", "value", "open", "high", "low", "close", "spreads", "deal_sheets"]))
             df = df.append(df2, ignore_index=True)
@@ -126,6 +128,7 @@ def UpdateOneStock(stockNum, start):
                 getMonth += 1
         else:
             retry += 1
+            dataEmpty = True
             print 'Retry', retry
             if retry == 3:
                 retry = 0
@@ -151,6 +154,9 @@ def UpdateOneStock(stockNum, start):
         #global errorList
         errorList.append(stockNum)
         print 'Save pickle error'
+    if dataEmpty:
+        errorList.append(stockNum)
+        print 'Data empty at last month'
     if errorList != []:
         print 'Error list:', errorList
 
