@@ -24,6 +24,8 @@ getRange:  是否從自設startDate開始，預設False，從81年1月1日開始
 startDate:  timedelta可設定往前幾天  
   
 ## 版本紀錄
+### 2017.06.08
+更新error list: 最後一個月沒資料(下市)
 ### 2017.06.07
 First commit.  
   
